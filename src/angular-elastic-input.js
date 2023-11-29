@@ -11,6 +11,10 @@ angular.module('puElasticInput', []).directive('puElasticInput', ['$document', '
 
     var wrapper = angular.element('<div style="position:fixed; top:-999px; left:0;"></div>');
     angular.element($document[0].body).append(wrapper);
+    wrapper.on('resize', function(evt) {
+      var newOffsetTop = - (100 + wrapper.prop('offsetHeight'));
+      wrapper.css('top', newOffsetTop + 'px');
+    });
 
     function getStyle(oElm, css3Prop){
         var strValue = "";
@@ -77,8 +81,6 @@ angular.module('puElasticInput', []).directive('puElasticInput', ['$document', '
             setMirrorStyle(mirror, element, attrs);
 
             wrapper.append(mirror);
-            var newTopOffset = - (100 + wrapper.prop('offsetHeight'));
-            wrapper.css('top', newTopOffset + 'px');
 
             function update() {
 
