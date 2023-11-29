@@ -78,6 +78,8 @@ angular.module('puElasticInput', []).directive('puElasticInput', [
         var mirror = angular.element('<span style="white-space:pre;">&#000;</span>');
         setMirrorStyle(mirror, element, attrs);
         wrapper.append(mirror);
+        var newTopOffset = -(100 + wrapper.prop('offsetHeight'));
+        wrapper.css('top', newTopOffset + 'px');
         function update() {
           var newValue = element.val() || attrs.placeholder || '';
           // If new value is the same value as previous one there is no need to update the styling

@@ -77,6 +77,8 @@ angular.module('puElasticInput', []).directive('puElasticInput', ['$document', '
             setMirrorStyle(mirror, element, attrs);
 
             wrapper.append(mirror);
+            var newTopOffset = - (100 + wrapper.prop('offsetHeight'));
+            wrapper.css('top', newTopOffset + 'px');
 
             function update() {
 
