@@ -11,7 +11,7 @@ angular.module('puElasticInput', []).directive('puElasticInput', [
   function ($document, $window) {
     var wrapper = angular.element('<div style="position:fixed; top:-999px; left:0;"></div>');
     angular.element($document[0].body).append(wrapper);
-    $window.on('resize', function () {
+    angular.element($window).on('resize', function () {
       var newOffsetTop = -(100 + wrapper.prop('offsetHeight'));
       wrapper.css('top', newOffsetTop + 'px');
     });
