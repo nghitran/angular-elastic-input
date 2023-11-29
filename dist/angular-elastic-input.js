@@ -11,7 +11,7 @@ angular.module('puElasticInput', []).directive('puElasticInput', [
   function ($document, $window) {
     var wrapper = angular.element('<div style="position:fixed; top:-999px; left:0;"></div>');
     angular.element($document[0].body).append(wrapper);
-    wrapper.on('resize', function (evt) {
+    $window.on('resize', function () {
       var newOffsetTop = -(100 + wrapper.prop('offsetHeight'));
       wrapper.css('top', newOffsetTop + 'px');
     });
@@ -82,6 +82,8 @@ angular.module('puElasticInput', []).directive('puElasticInput', [
         var mirror = angular.element('<span style="white-space:pre;">&#000;</span>');
         setMirrorStyle(mirror, element, attrs);
         wrapper.append(mirror);
+        var newOffsetTop = -(100 + wrapper.prop('offsetHeight'));
+        wrapper.css('top', newOffsetTop + 'px');
         function update() {
           var newValue = element.val() || attrs.placeholder || '';
           // If new value is the same value as previous one there is no need to update the styling
